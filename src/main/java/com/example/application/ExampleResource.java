@@ -2,6 +2,7 @@ package com.example.application;
 
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.annotation.Timed;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,6 +17,7 @@ public class ExampleResource {
         this.computationReturnsFalse = mr.meter("computation-returns-false");
     }
 
+    @Timed
     @GET
     public Response doSomething() {
         boolean result = computation();
